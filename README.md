@@ -55,10 +55,6 @@ spring.security.oauth2.client.provider.naver.user-name-attribute=response
 JDK: JDK 17
 DB: MariaDB
 
-## 라이선스
-
-프로젝트 라이선스를 명시하세요. 라이선스가 있다면, 여기에 라이선스 파일의 링크를 포함하세요.
-
 ## 연락처 정보
 
 kjy48048@gmail.com
