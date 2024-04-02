@@ -14,6 +14,10 @@ AI와 채팅은 OpenAI의 Assistants Api의 내용을 사용하였습니다.
 원본 서버를 복사한 서버로, 일부 올라와서는 안되는 개인정보와 enum, 보안관련 내용이 삭제되어 있습니다.
 이전하기전 travisCi를 사용했고, 현재 깃랩CICD를 사용하기 때문에 CICD 파일이 있습니다.
 
+![Screenshot_1711780856](https://github.com/kjy48048/honeydog-aichat-server/assets/55000077/4b4f001d-d74e-4d3a-9fe8-fe1aecd5da85)
+![Screenshot_1711779242](https://github.com/kjy48048/honeydog-aichat-server/assets/55000077/993814fe-a526-4c8e-8acf-172d4b85ffa5)
+![Screenshot_1711779254](https://github.com/kjy48048/honeydog-aichat-server/assets/55000077/4079eb13-8743-4e04-b251-b6ffcb19eda6)
+
 ## 시작하기 & 사전 조건
 
 1. application-local.properties, application-oauth.properties 파일 생성
