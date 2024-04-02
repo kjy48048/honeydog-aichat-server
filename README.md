@@ -31,7 +31,7 @@ spring.security.oauth2.client.registration.google.client-id={구글 클라이언
 spring.security.oauth2.client.registration.google.client-secret={구글 클라이언트 시크릿}
 spring.security.oauth2.client.registration.google.scope=profile,email
 
-# registration
+#registration
 spring.security.oauth2.client.registration.naver.client-id={네이버 클라이언트 아이디}
 spring.security.oauth2.client.registration.naver.client-secret={네이버 클라이언트 시크릿}
 spring.security.oauth2.client.registration.naver.redirect-uri={baseUrl}/{action}/oauth2/code/{registrationId}
@@ -39,7 +39,7 @@ spring.security.oauth2.client.registration.naver.authorization-grant-type=author
 spring.security.oauth2.client.registration.naver.scope=name,email,profile_image
 spring.security.oauth2.client.registration.naver.client-name=Naver
 
-# provider
+#provider
 spring.security.oauth2.client.provider.naver.authorization-uri=https://nid.naver.com/oauth2.0/authorize
 spring.security.oauth2.client.provider.naver.token-uri=https://nid.naver.com/oauth2.0/token
 spring.security.oauth2.client.provider.naver.user-info-uri=https://openapi.naver.com/v1/nid/me
@@ -48,6 +48,8 @@ spring.security.oauth2.client.provider.naver.user-name-attribute=response
 구글/네이버 클라이언트 아이디와, 시크릿을 각자 생성 후 설정
 구글 클라우드 플랫폼 주소(https://console.cloud.google.com)
 네이버 API등록(https://developers.naver.com/apps/#/register?api=nvlogin)
+
+그외 비어있는 부분(enum, config...) 확인 필요
 
 ## 개발 환경 설정
 JDK: JDK 17
