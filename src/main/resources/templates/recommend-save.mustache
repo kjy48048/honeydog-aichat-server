@@ -1,0 +1,30 @@
+{{>layout/header}}
+<h1>게시글 등록</h1>
+<div class="col-md-12">
+    <div class="col-md-4">
+        <form>
+            <div class="form-group">
+                <label for="title">닉네임</label>
+                <input type="text" class="form-control" id="nick" placeholder="닉네임을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="author">질문</label>
+                <input type="text" class="form-control" id="question" placeholder="질문을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content">색깔</label>
+                <input type="text" class="form-control" id="color" placeholder="색갈을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="content">순서</label>
+                <input type="text" class="form-control" id="orderIndex" placeholder="순서를 입력하세요">
+            </div>
+            <a href="/" role="button" class="btn btn-secondary">취소</a>
+            <button type="button" class="btn btn-primary" id="btn-save">등록</button>
+        </form>
+    </div>
+</div>
+
+<!--index.js 추가 -->
+<script src="/js/app/recommend.js"></script>
+{{>layout/footer}}

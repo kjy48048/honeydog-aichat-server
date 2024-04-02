@@ -1,0 +1,117 @@
+@charset "utf-8";
+
+/* Mobile styles */
+@media only screen and (max-width: 600px) {
+    .div-top-right {
+        width: 50%;
+        float: right;
+        padding-right: 50px;
+    }
+
+    .card-image {
+        max-width: 100%;
+        width: auto !important;
+        height: auto;
+    }
+
+    .card-head {
+        text-align: center;
+        font-family: cursive;
+        font-size: 24px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 601px) {
+    .div-top-right {
+        width: 50%;
+        float: right;
+        padding-right: 150px;
+    }
+
+    .card-image {
+        max-width: 256px;
+        width: auto !important;
+        height: auto;
+    }
+
+    .card-head {
+        text-align: center;
+        font-family: cursive;
+        font-size: 36px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+
+.list-group {
+    height: 300px;
+    overflow-y: scroll;
+    list-style-type: none;
+    padding: 0;
+}
+.recv-my {
+    background: antiquewhite;
+}
+.recv-other {
+    background: aliceblue;
+}
+.recv-system {
+    background: honeydew;
+}
+/* 타로카드 css... */
+.div-top-left {
+    width: 25%;
+    float: left;
+    padding-left: 50px;
+    padding-bottom: 25px;
+}
+
+
+.chat-container {
+    width: 50%;
+    float: left;
+    box-sizing: border-box;
+}
+
+.ui-container {
+    width: 50%;
+    float: right;
+    box-sizing: border-box;
+    display: none;
+}
+.div-bot {
+    width: 80%;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.card-details {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.card-keyword {
+    font-size: 14px;
+    font-family: cursive;
+    text-align: center;
+    font-weight: normal;
+}
+.card-keyword-bot {
+    font-size: 36px;
+    color: navajowhite;
+    font-family: cursive;
+    text-align: center;
+    font-weight: normal;
+}
+
+.card-description {
+    font-size: 16px;
+    font-weight: normal;
+}

@@ -1,0 +1,60 @@
+{{>layout/header}}
+
+<link rel="stylesheet" href="/css/app/user-board.css">
+    <h1>AI 앱채팅 관리 페이지 Ver.1</h1>
+    <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/" class="btn btn-info active" role="button">홈</a>
+            </div>
+        </div>
+        <br>
+        <!-- 목록 출력 영역 -->
+        <h4>유저관리</h4>
+        <table class="table table-horizontal table-bordered">
+            <thread class="thread-strong">
+                <tr>
+                    <th>유저번호</th>
+                    <th>유저명</th>
+                    <th>이메일</th>
+                    <th>유저권한</th>
+                    <th>유저상태</th>
+                    <th>최종수정일</th>
+                </tr>
+            </thread>
+            <tbody id="tbody">
+            {{#users}}
+                <tr>
+                    <td>{{userUuid}}</td>
+                    <td>{{nick}}</td>
+                    {{#email}}
+                        <td>{{email}}</td>
+                    {{/email}}
+                    {{^email}}
+                        <td>이메일 없음</td>
+                    {{/email}}
+                    <td>{{appUserRole}}</td>
+                    <td>{{appUserStatus}}</td>
+                    <td>{{formattedModifiedDate}}</td>
+                </tr>
+            {{/users}}
+            </tbody>
+        </table>
+        <div id="pagination" class="pagination">
+            <!-- 페이지 번호가 여기에 들어갑니다. 예: <a href="#">1</a> -->
+        </div>
+        <div class="search-container">
+            <select id="search-category">
+                <option value="roomNick">제목</option>
+                <option value="roomStatus">상태</option>
+                <option value="roomType">종류</option>
+            </select>
+            <input type="text" id="search-query" placeholder="검색어 입력...">
+            <button type="button" id="btn-search">검색</button>
+        </div>
+    </div>
+
+<!--user-board.js 추가 -->
+<script src="/js/app/user-board.js"></script>
+{{>layout/footer}}

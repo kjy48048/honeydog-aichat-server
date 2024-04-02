@@ -1,0 +1,49 @@
+{{>layout/header}}
+    <h1>AI 앱채팅 추천질문 페이지 Ver.1</h1>
+    <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
+        <div class="row">
+            <div class="col-md-6">
+                <a href="/recommend/save" role="button" class="btn btn-primary">글 등록</a>
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                    <a href="/lobby" class="btn btn-info active" role="button">로비</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                {{/userName}}
+            </div>
+        </div>
+        <br>
+        <!-- 목록 출력 영역 -->
+        <table class="table table-horizontal table-bordered">
+            <thread class="thread-strong">
+                <tr>
+                    <th>게시글번호</th>
+                    <th>질문</th>
+                    <th>닉네임</th>
+                    <th>색깔</th>
+                    <th>순서</th>
+                    <th>최종수정일</th>
+                </tr>
+            </thread>
+            <tbody id="tbody">
+            {{#recommends}}
+                <tr>
+                    <td>{{id}}</td>
+                    <td><a href="/recommend/update/{{id}}">{{#question}}{{question}}{{/question}}</a></td>
+                    <td>{{#nick}}{{nick}}{{/nick}}</td>
+                    <td>{{#color}}{{color}}{{/color}}</td>
+                    <td>{{#orderIndex}}{{orderIndex}}{{/orderIndex}}</td>
+                    <td>{{formattedModifiedDate}}</td>
+                </tr>
+            {{/recommends}}
+            </tbody>
+        </table>
+    </div>
+
+<!--index.js 추가 -->
+<script src="/js/app/recommend.js"></script>
+{{>layout/footer}}

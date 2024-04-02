@@ -1,0 +1,71 @@
+{{>layout/header}}
+
+<link rel="stylesheet" href="/css/app/lobby.css">
+    <h1>AI 앱채팅 관리 페이지 Ver.1</h1>
+
+    <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
+        <div class="row">
+            <div class="col-md-6">
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                    <a href="/" class="btn btn-info active" role="button">홈</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                {{/userName}}
+            </div>
+        </div>
+        <br>
+        <!-- 목록 출력 영역 -->
+        <div class="row">
+            <div class="col-md-6">
+                <h3>채팅방 리스트</h3>
+            </div>
+        </div>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <label class="input-group-text">방제목</label>
+                <input type="hidden" id="userId" value="{{userId}}">
+            </div>
+            <input type="text" class="form-control" id="title">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" id="btn-create">채팅방 개설</button>
+            </div>
+        </div>
+        <ul class="list-group board-container">
+            <!--  채팅방 리스트 동적 생성... -->
+            <table>
+                <thead>
+                <tr>
+                    <th>채팅방아이디</th>
+                    <th>제목</th>
+                    <th>상태</th>
+                    <th>유형</th>
+                    <th>수정일</th>
+                </tr>
+                </thead>
+                <tbody id="room-list">
+                <!-- 게시물 목록이 여기에 들어갑니다. -->
+                </tbody>
+            </table>
+        </ul>
+        <div id="pagination" class="pagination">
+            <!-- 페이지 번호가 여기에 들어갑니다. 예: <a href="#">1</a> -->
+        </div>
+        <div class="search-container">
+            <select id="search-category">
+                <option value="roomNick">제목</option>
+                <option value="roomStatus">상태</option>
+                <option value="roomType">종류</option>
+            </select>
+            <input type="text" id="search-query" placeholder="검색어 입력...">
+            <button type="button" id="btn-search">검색</button>
+        </div>
+    </div>
+
+<!--lobby.js 추가 -->
+<script src="/js/app/lobby.js"></script>
+{{>layout/footer}}

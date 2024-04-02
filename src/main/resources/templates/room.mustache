@@ -1,0 +1,62 @@
+{{>layout/header}}
+<!-- room.css 추가 -->
+<link rel="stylesheet" href="/css/app/room.css">
+<!-- 웹소캣 js 추가 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.1.5/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+
+    <h1>AI 앱채팅 관리 페이지 Ver.1</h1>
+    <div class="col-md-12">
+        <!-- 로그인 기능 영역 -->
+        <div class="row">
+            <div class="col-md-6">
+                {{#userName}}
+                    Logged in as: <span id="user">{{userName}}</span>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
+                    <a href="/lobby" class="btn btn-info active" role="button">로비</a>
+                {{/userName}}
+                {{^userName}}
+                    <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>
+                    <a href="/oauth2/authorization/naver" class="btn btn-secondary active" role="button">Naver Login</a>
+                {{/userName}}
+            </div>
+        </div>
+        <br>
+        <!-- container -->
+        <div>
+            <!-- 챗 영역 -->
+            <div class="chat-container col-md-6">
+                <div>
+                    <h2>{{#room}}{{roomNick}}{{/room}}</h2>
+                </div>
+                <div class="input-group">
+                    <input type="hidden" id="roomUuid" value="{{roomUuid}}">
+                    {{#roomUser}}
+                        <input type="hidden" id="appUserRoomId" value="{{appUserRoomId}}">
+                        <input type="hidden" id="userUuid" value="{{appUserUuid}}">
+                    {{/roomUser}}
+                    <input type="hidden" id="sender" value="{{sender}}">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">내용</label>
+                    </div>
+                    <input type="text" class="form-control" id="ipt-message">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" id="btn-message">보내기</button>
+                    </div>
+                </div>
+                <ul class="list-group" id="messageUl">
+                    <!--<li class="list-group-item" v-for="message in messages">-->
+                </ul>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+            <!-- button -->
+            {{#isHost}}<button type="button" class="btn btn-danger" id="btn-delete">방 삭제</button>{{/isHost}}
+        </div>
+    </div>
+
+<!--room.js 추가 -->
+<script src="/js/app/room.js"></script>
+{{>layout/footer}}

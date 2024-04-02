@@ -1,0 +1,75 @@
+image: openjdk:18
+
+stages:
+  - build
+  - prepare_artifact
+  - deploy
+
+before_script:
+  - microdnf update && microdnf install -y zip
+
+build:
+  stage: build
+  script:
+    - echo $JAVA_HOME # JAVA_HOME이 올바르게 설정되었는지 확인
+    - ls -l $JAVA_HOME
+    - chmod +x gradlew
+    - ./gradlew clean build
+    - echo "Build complete."
+  artifacts:
+    paths:
+      - build/libs/*.jar
+  only:
+    - main
+
+prepare_artifact:
+  stage: prepare_artifact
+  script:
+    - echo "Preparing artifact..."
+    - zip -r [zip파일 이름] *
+    - mkdir -p deploy
+    - mv [zip파일 이름].zip deploy/[zip파일 이름].zip
+    - mkdir -p before-deploy
+    - cp scripts/*.sh before-deploy/
+    - cp appspec.yml before-deploy/
+    # .jar 파일이 있는지 확인하고 복사 전 상태를 로깅
+    - echo "Checking for .jar files in build/libs/"
+    - ls -al build/libs/
+    - cp build/libs/*.jar before-deploy/
+    # before-deploy 디렉토리의 내용을 확인
+    - echo "Listing contents of before-deploy/ after copying .jar"
+    - ls -al before-deploy/
+    - cd before-deploy && zip -r before-deploy *
+    - cd ../ && mkdir -p deploy
+    - mv before-deploy/before-deploy.zip deploy/[zip파일 이름].zip
+  artifacts:
+    paths:
+      - deploy/[zip파일 이름].zip
+  only:
+    - main
+
+deploy_to_s3:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
+    - echo "Deploying to S3."
+    - aws s3 cp deploy/[zip파일 이름].zip s3://[ s3버킷]/ --region ap-northeast-2 --acl private
+  only:
+    - main
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
+
+deploy_to_codedeploy:
+  stage: deploy
+  image: python:latest
+  script:
+    - pip install awscli
+    - echo "Deploying with CodeDeploy."
+    - aws deploy create-deployment --application-name [zip파일 이름] --s3-location bucket=[ s3버킷],key=[zip파일 이름].zip,bundleType=zip --deployment-group-name [zip파일 이름]-group --region ap-northeast-2
+  only:
+    - main
+  variables:
+    AWS_ACCESS_KEY_ID: $AWS_ACCESS_KEY
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_KEY
