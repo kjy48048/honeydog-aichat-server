@@ -14,9 +14,9 @@ AI와 채팅은 OpenAI의 Assistants Api의 내용을 사용하였습니다.
 원본 서버를 복사한 서버로, 일부 올라와서는 안되는 개인정보와 enum, 보안관련 내용이 삭제되어 있습니다.
 이전하기전 travisCi를 사용했고, 현재 깃랩CICD를 사용하기 때문에 CICD 파일이 있습니다.
 
-<img src="https://honeydog.co.kr/images/web/Screenshot_1711779242.png" alt="스크린샷 1" width="700" height="370">
-<img src="https://honeydog.co.kr/images/web/Screenshot_1711779254.png" alt="스크린샷 2" width="700" height="370">
-<img src="https://honeydog.co.kr/images/web/Screenshot_1715758692.png" alt="스크린샷 3" width="700" height="370">
+<img src="https://honeydog.co.kr/images/web/Screenshot_1711779242.png" alt="스크린샷 1" width="300" height="600">
+<img src="https://honeydog.co.kr/images/web/Screenshot_1711779254.png" alt="스크린샷 2" width="300" height="600">
+<img src="https://honeydog.co.kr/images/web/Screenshot_1715758692.png" alt="스크린샷 3" width="300" height="600">
 
 ## 시작하기 & 사전 조건
 
